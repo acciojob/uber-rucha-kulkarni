@@ -3,6 +3,7 @@ package com.driver.services.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.driver.model.TripBooking;
 import com.driver.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,8 +46,8 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void deleteAdmin(int adminId){
 		// Delete admin without using deleteById function
-		adminRepository1.deleteById(adminId);
-
+		Admin admin = adminRepository1.findById(adminId).get();
+		adminRepository1.delete(admin);
 	}
 
 	@Override
